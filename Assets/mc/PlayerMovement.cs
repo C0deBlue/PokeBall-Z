@@ -28,6 +28,37 @@ public class PlayerMovement : MonoBehaviour
     {
         //Movement
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+ 
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        Debug.Log("TriggerEnter");
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("CollisionEnter");
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        Debug.Log("CollisionExit");
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log("TriggerExit");
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+       Debug.Log("CollisionStay");
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        
+         Debug.Log("TriggerStay");
+        
+    }
+
 }
