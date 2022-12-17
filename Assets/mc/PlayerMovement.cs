@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 10f;
     public float speedChange = 3.0f;
     public float moveSpeed = 5f;
+
+    [Tooltip("The amount the animation speeds up when running")]
     public float animationSpeedMod = 1.0f;
 
     bool walking = true;
