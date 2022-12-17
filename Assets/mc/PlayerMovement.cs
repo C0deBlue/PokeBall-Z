@@ -1,14 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    public float walkSpeed = 5f;
+    public float runSpeed = 10f;
+    public float speedChange = 3.0f;
     public float moveSpeed = 5f;
+
+    bool walking = true;
 
     public Rigidbody2D rb;
     public Animator animator;
+    public TextMeshProUGUI walkRunText;
 
     Vector2 movement;
 
@@ -16,19 +22,26 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Input
-       movement.x = Input.GetAxisRaw("Horizontal");
-       movement.y = Input.GetAxisRaw("Vertical");
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
 
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
+
+        moveSpeed = Mathf.Clamp(moveSpeed + (walking ? -speedChange * Time.deltaTime : speedChange * Time.deltaTime), walkSpeed, runSpeed);
     }
 
     void FixedUpdate()
     {
         //Movement
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
- 
+    }
+    
+    public void SpeedButtonToggle()
+    {
+        walking = !walking;
+        walkRunText.text = walking ? "Walk" : "Run";
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -52,13 +65,10 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
-       Debug.Log("CollisionStay");
+        Debug.Log("CollisionStay");
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        
-         Debug.Log("TriggerStay");
-        
+        Debug.Log("TriggerStay");
     }
-
 }
