@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 10f;
     public float speedChange = 3.0f;
     public float moveSpeed = 5f;
+    public float animationSpeedMod = 1.0f;
 
     bool walking = true;
 
@@ -28,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
+        animator.SetFloat("AnimationMod", 1.0f + ((moveSpeed - walkSpeed) / (runSpeed - walkSpeed)) * animationSpeedMod);
 
         moveSpeed = Mathf.Clamp(moveSpeed + (walking ? -speedChange * Time.deltaTime : speedChange * Time.deltaTime), walkSpeed, runSpeed);
     }
