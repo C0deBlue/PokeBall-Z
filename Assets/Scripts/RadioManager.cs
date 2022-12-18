@@ -44,8 +44,6 @@ public class RadioManager : MonoBehaviour
 
     public AudioSource radio;
 
-    public bool radioOn;
-
 
     // WIll need a saved key of some sort to keep track of unlocked stations
     // Start is called before the first frame update
@@ -55,8 +53,6 @@ public class RadioManager : MonoBehaviour
         DictOfStations = new Dictionary<string, AudioClip>();
         MasterKey = new Dictionary<string, bool>();
         unlockedStations = new List<AudioClip>();
-        //Radio starts as off
-        radioOn = false;
 
         // populate the ListOfStations dictionary from the MasterListOfStations
         foreach (AudioClip clip in MasterListOfStations)
@@ -75,29 +71,23 @@ public class RadioManager : MonoBehaviour
             // Unlock the station
             UnlockStation(MasterListOfStations[i].name);
         }
-        
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (radioOn)
+        if (activeIndex != 0)
         {
-
-            if (activeIndex != 0)
+            if (!radio.isPlaying)
             {
-                if (!radio.isPlaying)
-                {
-                    radio.clip = unlockedStations[activeIndex];
-                    radio.Play();
-                }
+                radio.clip = unlockedStations[activeIndex];
+                radio.Play();
             }
-            else
-            {
-                if (radio.isPlaying)
-                    radio.Stop();
-            }
+        }   
+        else
+        {
+            if (radio.isPlaying)
+                radio.Stop();
         }
 
         // This is TEMPORARY to show how unlocking a new station would work.
@@ -131,11 +121,4 @@ public class RadioManager : MonoBehaviour
         // Update the key to match
         MasterKey[name] = true;
     }
-
-    // Toggles the radio.  Called by clicking the UI button for the radio.
-    public void ToggleRadio()
-    {
-        radioOn = !radioOn;
-        radio.Stop();
-    }    
 }
