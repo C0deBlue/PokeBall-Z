@@ -2406,66 +2406,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1922199724277289867, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_text
-      value: Inventory
-      objectReference: {fileID: 0}
-    - target: {fileID: 1922199724277289867, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: afec79e32528a874bbb4968accab68cb, type: 2}
-    - target: {fileID: 1922199724277289867, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 67994917387393295, guid: afec79e32528a874bbb4968accab68cb, type: 2}
-    - target: {fileID: 2191026380457556931, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4999581875434720903, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_Name
-      value: button_InventoryToggle
-      objectReference: {fileID: 0}
-    - target: {fileID: 5983061929611018022, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -77
-      objectReference: {fileID: 0}
-    - target: {fileID: 7509342277396515772, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7509342277396515772, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 141.3214
-      objectReference: {fileID: 0}
-    - target: {fileID: 7509342277396515772, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 141.3266
-      objectReference: {fileID: 0}
-    - target: {fileID: 7509342277396515772, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 761.08344
-      objectReference: {fileID: 0}
-    - target: {fileID: 7509342277396515772, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 21.599976
-      objectReference: {fileID: 0}
-    - target: {fileID: 7651978599670050169, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7651978599670050169, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7651978599670050169, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 7651978599670050169, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 1080
-      objectReference: {fileID: 0}
     - target: {fileID: 7651978599670050171, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
       propertyPath: m_Name
       value: canvas_Game
@@ -2554,66 +2494,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7651978600169064857, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -74.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7651978600169064862, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_fontSize
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 7651978600169064862, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: afec79e32528a874bbb4968accab68cb, type: 2}
-    - target: {fileID: 7651978600169064862, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 7651978600169064862, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 67994917387393295, guid: afec79e32528a874bbb4968accab68cb, type: 2}
-    - target: {fileID: 7651978600169064862, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_TextStyleHashCode
-      value: -1183493901
-      objectReference: {fileID: 0}
     - target: {fileID: 7651978600491593538, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2082062863}
-    - target: {fileID: 7651978600491593538, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SpeedButtonToggle
-      objectReference: {fileID: 0}
-    - target: {fileID: 7651978600491593539, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b40239c62c231df4db9b05e83147ac73, type: 3}
-    - target: {fileID: 7651978600491593549, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 7651978600491593549, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 7651978600491593549, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7651978600491593549, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 892.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7651978600491593549, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 27.599976
-      objectReference: {fileID: 0}
-    - target: {fileID: 9132209401608819536, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: ab8d520ead746e246ada21e198548586, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
 --- !u!114 &1331616607 stripped
