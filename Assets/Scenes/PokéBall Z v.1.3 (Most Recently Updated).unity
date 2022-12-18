@@ -3842,9 +3842,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: SpeedButtonToggle
+      - m_Target: {fileID: 1847867264}
+        m_TargetAssemblyTypeName: RadioManager, Assembly-CSharp
+        m_MethodName: ToggleRadio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4008,6 +4008,7 @@ MonoBehaviour:
   radioStatic: {fileID: 8300000, guid: a8481592a2b34e64baf650b114991e88, type: 3}
   activeIndex: 2
   radio: {fileID: 1847867263}
+  radioOn: 0
 --- !u!1 &1933110314
 GameObject:
   m_ObjectHideFlags: 0
