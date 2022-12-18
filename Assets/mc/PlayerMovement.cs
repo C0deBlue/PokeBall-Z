@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 movement;
 
+    bool disabled;
+
     // Update is called once per frame
     void Update()
     {
@@ -34,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("AnimationMod", 1.0f + ((moveSpeed - walkSpeed) / (runSpeed - walkSpeed)) * animationSpeedMod);
 
         moveSpeed = Mathf.Clamp(moveSpeed + (walking ? -speedChange * Time.deltaTime : speedChange * Time.deltaTime), walkSpeed, runSpeed);
+
     }
 
     void FixedUpdate()
