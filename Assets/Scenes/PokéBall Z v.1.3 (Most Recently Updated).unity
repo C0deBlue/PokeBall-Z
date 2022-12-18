@@ -3129,7 +3129,7 @@ PrefabInstance:
     - target: {fileID: 7651978600491593539, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b40239c62c231df4db9b05e83147ac73, type: 3}
+      objectReference: {fileID: 21300000, guid: 8d4c78bfc80bef1419360006a5e7d59f, type: 3}
     - target: {fileID: 7651978600491593549, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
       propertyPath: m_SizeDelta.x
       value: 120
@@ -3153,7 +3153,7 @@ PrefabInstance:
     - target: {fileID: 9132209401608819536, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ab8d520ead746e246ada21e198548586, type: 3}
+      objectReference: {fileID: 21300000, guid: 233973daf720e3941a1955188d104727, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
 --- !u!114 &1331616607 stripped
@@ -3854,7 +3854,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 18fb2964d59ca8342a23c1ef6b7cdcf9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 839777544dfca6e4d86cf2fea9ea9883, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3986,7 +3986,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ad69c0aa3bc704f4dbc8bbf71329fe23, type: 3}
   - {fileID: 8300000, guid: f3936b82429df55418b07c269c795f37, type: 3}
   radioStatic: {fileID: 8300000, guid: a8481592a2b34e64baf650b114991e88, type: 3}
-  activeIndex: 0
+  activeIndex: 2
   radio: {fileID: 1847867263}
 --- !u!1 &1933110314
 GameObject:
