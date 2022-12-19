@@ -23,4 +23,9 @@ public class ScriptableInventoryObject : ScriptableObject
     {
         return inventorySize;
     }
+
+    public virtual string GetDescription()
+    {
+        return inventoryDescription;
+    }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -26,16 +27,38 @@ public class InventoryManager : MonoBehaviour
     public int numRows;
     public float rectWidth;
     public float rectHeight;
+    public float borderThickness = 5.0f;
+    public Vector2 borderSize = new Vector2(10.0f, 10.0f);
     public bool generate = false;
+
+    public Color normalColor = Color.white;
+    public Color selectColor = Color.yellow;
+
     Vector2 sizePerSquare = new Vector2(1.0f, 1.0f);
+    Vector2 sizePerSquareNoBorder = new Vector2(1.0f, 1.0f);
+    Vector2 upperLeft = new Vector2(1.0f, 1.0f);
+
+    [Header("Selection")]
+    public GameObject selectionTextBox;
+    public TextMeshProUGUI selectionDescription;
+
+    int lastClickedID = -1;
 
     public void Start()
     {
         if (generate)
         {
             RectTransform rt = horizontalLinePrefab.parent as RectTransform;
+            sizePerSquare.x = rectWidth / numColumns;
+            sizePerSquare.y = rectHeight / numRows;
 
-            activeInventory = new List<InventoryObjectDetails>(numColumns * numRows);
+            sizePerSquareNoBorder.x = (rectWidth - 5.0f * (numColumns + 1)) / numColumns;
+            sizePerSquareNoBorder.y = (rectHeight - 5.0f * (numRows + 1)) / numRows;
+
+            upperLeft.x = -rectWidth * 0.5f;
+            upperLeft.y = rectHeight * 0.5f;
+
+            activeInventory = new List<InventoryObjectDetails>();
             for (int row = 0; row < numRows; row++)
             {
                 for (int column = 0; column < numColumns; column++)
@@ -45,6 +68,15 @@ public class InventoryManager : MonoBehaviour
                         RectTransform newColumnObject = Instantiate(verticalLinePrefab, verticalLinePrefab.parent);
                         newColumnObject.anchoredPosition = new Vector2(((rectWidth - 5.0f) / numColumns) * (column + 1), newColumnObject.anchoredPosition.y);
                     }
+
+                    activeInventory.Add(new InventoryObjectDetails());
+
+                    RectTransform newInventorySpot = Instantiate(inventoryPlacePrefab, inventoryPlacePrefab.parent);
+                    newInventorySpot.anchoredPosition = new Vector2(upperLeft.x + sizePerSquareNoBorder.x * (column + 0.5f) + borderThickness * (column + 1), 
+                                                                    upperLeft.y - sizePerSquareNoBorder.y * (row + 0.5f) - borderThickness * (row + 1));
+                    newInventorySpot.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, sizePerSquareNoBorder.x - borderSize.x);
+                    newInventorySpot.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, sizePerSquareNoBorder.y - borderSize.y);
+                    activeInventory[activeInventory.Count - 1].objectImage = newInventorySpot.GetComponent<Image>();
                 }
 
                 if (row < numRows - 1)
@@ -53,6 +85,22 @@ public class InventoryManager : MonoBehaviour
                     newRowObject.anchoredPosition = new Vector2(newRowObject.anchoredPosition.x, -((rectHeight - 5.0f) / numRows) * (row + 1));
                 }
             }
+        }
+    }
+
+    public void SquareClicked(int id)
+    {
+        if (activeInventory[id].objectInSlot != null)
+        {
+            activeInventory[id].objectImage.color = selectColor;
+            if (lastClickedID != -1)
+            {
+                activeInventory[lastClickedID].objectImage.color = normalColor;
+            }
+            lastClickedID = id;
+
+            selectionTextBox.SetActive(true);
+            selectionDescription.text = activeInventory[id].objectInSlot.GetDescription();
         }
     }
 
@@ -78,6 +126,13 @@ public class InventoryManager : MonoBehaviour
     {
         inventoryGroup.alpha = 0.0f;
         inventoryGroup.blocksRaycasts = false;
+        selectionTextBox.SetActive(false);
+
+        if (lastClickedID != -1)
+        {
+            activeInventory[lastClickedID].objectImage.color = normalColor;
+        }
+        lastClickedID = -1;
     }
 
     public bool PickUpObject(ScriptableInventoryObject newObject)
