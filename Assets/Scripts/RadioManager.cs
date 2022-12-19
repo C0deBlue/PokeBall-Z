@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 // Below comments written by Jonathan Sands 12/17/2022 @ 11:15AM
 // ~
@@ -20,7 +21,7 @@ using UnityEngine;
 /// and hasn't already been unlocked, it will unlock.
 /// </summary>
 // ~
-public class RadioManager : MonoBehaviour
+public class RadioManager : MonoBehaviour, IPointerClickHandler
 {
     // Master list of ALL the stations (behind the scenes)
     // Used to easily check if a station exists in the masterlist
@@ -44,6 +45,10 @@ public class RadioManager : MonoBehaviour
 
     public AudioSource radio;
 
+    public bool isActive;
+
+    public float radioTimer;
+
 
     // WIll need a saved key of some sort to keep track of unlocked stations
     // Start is called before the first frame update
@@ -53,6 +58,7 @@ public class RadioManager : MonoBehaviour
         DictOfStations = new Dictionary<string, AudioClip>();
         MasterKey = new Dictionary<string, bool>();
         unlockedStations = new List<AudioClip>();
+        isActive = false;
 
         // populate the ListOfStations dictionary from the MasterListOfStations
         foreach (AudioClip clip in MasterListOfStations)
@@ -61,9 +67,11 @@ public class RadioManager : MonoBehaviour
             MasterKey.Add(clip.name, clip);
             MasterKey[clip.name] = false;
         }
+
+        radioTimer = 0;
         
         // first station of unlockStations is always static
-        unlockedStations.Add(radioStatic);
+        // unlockedStations.Add(radioStatic);
         // Next unlock the first 3 radio stations in the master list
         // This is temporary - This will be controlled by a save file of some sort in the future
         for (int i = 0; i < 3; i++)
@@ -71,25 +79,14 @@ public class RadioManager : MonoBehaviour
             // Unlock the station
             UnlockStation(MasterListOfStations[i].name);
         }
+        radio.clip = unlockedStations[activeIndex];
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (activeIndex != 0)
-        {
-            if (!radio.isPlaying)
-            {
-                radio.clip = unlockedStations[activeIndex];
-                radio.Play();
-            }
-        }   
-        else
-        {
-            if (radio.isPlaying)
-                radio.Stop();
-        }
-
+        radioTimer += Time.deltaTime;
+        
         // This is TEMPORARY to show how unlocking a new station would work.
         // In the future, the method will be queried by a separate script and will pass the name to unlock here.
         if (Input.GetKeyDown(KeyCode.U))
@@ -99,13 +96,66 @@ public class RadioManager : MonoBehaviour
 
     }
 
-    private void OnMouseDown()
+    // This will occur while changing stations.  Checks if we need to reset the timer
+    private void HandleTimer()
     {
+        if (radioTimer > 10000)      // if a clip is over 10000 seconds long, god help you
+            radioTimer = 0;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        // if (eventData.button == PointerEventData.InputButton.Left)
+        //     ToggleRadio();
+        if (eventData.button == PointerEventData.InputButton.Right)
+            CycleStation();
+    }
+
+    // Toggles the radio on/off
+    public void ToggleRadio()
+    {
+        // Check if timer needs to reset
+        HandleTimer();
+        isActive = !isActive;
+        if (isActive)
+        {
+            // Play where the radio currently is in time
+            radio.time = radioTimer % radio.clip.length;
+            radio.Play();
+        }
+        else
+            radio.Stop();
+    }
+
+    // Changes the current station to the next one
+    private void CycleStation()
+    {
+        // can't toggle the radio if it's off
+        if (!isActive)
+            return;
+        // Check if timer needs to be reset
+        HandleTimer();
+        // Stop current playing
         radio.Stop();
         // Change the radio station
-        radio.PlayOneShot(radioStatic);
         activeIndex = (activeIndex + 1) % unlockedStations.Count;
-    }
+        // We don't need this anymore since we have a different way of muting
+        // if (activeIndex == 0)
+        // {
+        //     radio.Stop();
+        //     return;
+        // }
+        // Play the static
+        radio.PlayOneShot(radioStatic);
+        // Change the active clip
+        radio.clip = unlockedStations[activeIndex];
+        // Change the clip's time to be the current timer modded by its own length
+        radio.time = radioTimer % radio.clip.length;
+        radio.PlayDelayed(radioStatic.length);
+        // radio.Play();
+
+
+    }    
 
     /// <summary>
     /// Takes a name of the station to unlock. Adds that station to the list of unlocked stations
