@@ -9,6 +9,7 @@ public class ScriptableInventoryObject : ScriptableObject
     [SerializeField] Sprite inventorySprite;
     [SerializeField] Vector2 inventorySize;
     [SerializeField] string inventoryDescription;
+    [SerializeField] string shortName;
 
     [Header("Stacks")]
     [SerializeField] bool stackable = false;
@@ -27,5 +28,10 @@ public class ScriptableInventoryObject : ScriptableObject
     public virtual string GetDescription()
     {
         return inventoryDescription;
+    }
+
+    public virtual string GetShortName()
+    {
+        return shortName;
     }
 }

@@ -16,6 +16,7 @@ public class InventoryManager : MonoBehaviour
     }
 
     public List<InventoryObjectDetails> activeInventory;
+    public static InventoryManager instance;
 
     [Header("Canvas Management")]
     public RectTransform inventoryPlacePrefab;
@@ -43,6 +44,11 @@ public class InventoryManager : MonoBehaviour
     public TextMeshProUGUI selectionDescription;
 
     int lastClickedID = -1;
+
+    void OnEnable()
+    {
+        instance = this;
+    }
 
     public void Start()
     {
@@ -77,6 +83,7 @@ public class InventoryManager : MonoBehaviour
                     newInventorySpot.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, sizePerSquareNoBorder.x - borderSize.x);
                     newInventorySpot.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, sizePerSquareNoBorder.y - borderSize.y);
                     activeInventory[activeInventory.Count - 1].objectImage = newInventorySpot.GetComponent<Image>();
+                    newInventorySpot.GetComponent<InventorySquareID>().id = row * numColumns + column;
                 }
 
                 if (row < numRows - 1)
@@ -147,8 +154,9 @@ public class InventoryManager : MonoBehaviour
         Vector2 inventorySize = newObject.GetInventorySize();
         activeInventory[openSlot].objectInSlot = newObject;
         activeInventory[openSlot].objectImage.sprite = newObject.GetInventorySprite();
-        activeInventory[openSlot].objectImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, inventorySize.x);
-        activeInventory[openSlot].objectImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, inventorySize.y);
+        activeInventory[openSlot].objectImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (sizePerSquareNoBorder.x - borderSize.x) * inventorySize.x);
+        activeInventory[openSlot].objectImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, (sizePerSquareNoBorder.y - borderSize.y) * inventorySize.y);
+        activeInventory[openSlot].objectImage.gameObject.SetActive(true);
         return true;
     }
 
@@ -158,6 +166,7 @@ public class InventoryManager : MonoBehaviour
         if (index != -1)
         {
             activeInventory[index].objectInSlot = null;
+            activeInventory[index].objectImage.gameObject.SetActive(false);
             return true;
         }
         return false;

@@ -15,5 +15,6 @@ MonoBehaviour:
   inventorySprite: {fileID: 21300000, guid: 07473a40734f1974c926b2f697410272, type: 3}
   inventorySize: {x: 1, y: 1}
   inventoryDescription: It's the old man's key! I can use this to open his house.
+  shortName: KameKey
   stackable: 0
   maxStacks: 999

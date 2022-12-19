@@ -23,6 +23,13 @@ public class PlayerMovement : MonoBehaviour
 
     bool disabled;
 
+    public static Transform playerTransform;
+
+    void OnEnable()
+    {
+        playerTransform = transform;
+    }
+
     // Update is called once per frame
     void Update()
     {
