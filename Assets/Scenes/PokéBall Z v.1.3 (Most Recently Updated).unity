@@ -2692,7 +2692,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1847867260, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleRadio
+      value: CycleStation
       objectReference: {fileID: 0}
     - target: {fileID: 1847867260, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

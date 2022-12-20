@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 // Below comments written by Jonathan Sands 12/17/2022 @ 11:15AM
 // ~
 // TODO: Make work with Audio System when complete.  Add persistence with File I/O
-// Once menu interactable menu is created (my job?) make radio work with that systm
 // Radio shut off sfx
 /// <summary>
 /// Bare Bones of playing stations on a radio implemented
@@ -21,7 +20,7 @@ using UnityEngine.EventSystems;
 /// and hasn't already been unlocked, it will unlock.
 /// </summary>
 // ~
-public class RadioManager : MonoBehaviour, IPointerClickHandler
+public class RadioManager : MonoBehaviour
 {
     // Master list of ALL the stations (behind the scenes)
     // Used to easily check if a station exists in the masterlist
@@ -71,7 +70,7 @@ public class RadioManager : MonoBehaviour, IPointerClickHandler
         radioTimer = 0;
         
         // first station of unlockStations is always static
-        // unlockedStations.Add(radioStatic);
+        unlockedStations.Add(radioStatic);
         // Next unlock the first 3 radio stations in the master list
         // This is temporary - This will be controlled by a save file of some sort in the future
         for (int i = 0; i < 3; i++)
@@ -103,15 +102,18 @@ public class RadioManager : MonoBehaviour, IPointerClickHandler
             radioTimer = 0;
     }
 
+    /*
     public void OnPointerClick(PointerEventData eventData)
     {
         // if (eventData.button == PointerEventData.InputButton.Left)
         //     ToggleRadio();
-        if (eventData.button == PointerEventData.InputButton.Right)
-            CycleStation();
+        // if (eventData.button == PointerEventData.InputButton.Right)
+        //     CycleStation();
     }
+    */
 
     // Toggles the radio on/off
+    /*
     public void ToggleRadio()
     {
         // Check if timer needs to reset
@@ -126,13 +128,14 @@ public class RadioManager : MonoBehaviour, IPointerClickHandler
         else
             radio.Stop();
     }
+    */
 
     // Changes the current station to the next one
-    private void CycleStation()
+    public void CycleStation()
     {
         // can't toggle the radio if it's off
-        if (!isActive)
-            return;
+        // if (!isActive)
+        //     return;
         // Check if timer needs to be reset
         HandleTimer();
         // Stop current playing
@@ -140,19 +143,19 @@ public class RadioManager : MonoBehaviour, IPointerClickHandler
         // Change the radio station
         activeIndex = (activeIndex + 1) % unlockedStations.Count;
         // We don't need this anymore since we have a different way of muting
-        // if (activeIndex == 0)
-        // {
-        //     radio.Stop();
-        //     return;
-        // }
+        if (activeIndex == 0)
+        {
+            radio.Stop();
+            return;
+        }
         // Play the static
         radio.PlayOneShot(radioStatic);
         // Change the active clip
         radio.clip = unlockedStations[activeIndex];
         // Change the clip's time to be the current timer modded by its own length
         radio.time = radioTimer % radio.clip.length;
+        // Delay the radio playing by the length of the static clip
         radio.PlayDelayed(radioStatic.length);
-        // radio.Play();
 
 
     }    
