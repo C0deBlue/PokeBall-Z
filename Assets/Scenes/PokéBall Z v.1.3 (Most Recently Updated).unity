@@ -4169,14 +4169,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 152635435}
-    - target: {fileID: 7082508096862992645, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7082508096862992645, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
-      propertyPath: m_PlaneDistance
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 7082508096862992760, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -4211,18 +4203,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7082508096862992760, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7082508096862992760, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7082508096862992760, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7082508096862992760, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
-      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7082508096862992760, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
@@ -4276,46 +4256,6 @@ PrefabInstance:
     - target: {fileID: 7082508096862992761, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
       propertyPath: m_Name
       value: canvas_CameraSpace
-      objectReference: {fileID: 0}
-    - target: {fileID: 7082508096862992762, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7082508096862992762, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7082508096862992762, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7082508096862992762, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 7082508096862992762, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 1080
-      objectReference: {fileID: 0}
-    - target: {fileID: 7082508096862992762, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
-      propertyPath: m_ReferencePixelsPerUnit
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7082508097284592970, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7082508097284592970, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7082508097284592970, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7082508097284592970, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
