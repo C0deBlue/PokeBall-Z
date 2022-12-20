@@ -156,6 +156,8 @@ MonoBehaviour:
   radioStatic: {fileID: 8300000, guid: a8481592a2b34e64baf650b114991e88, type: 3}
   activeIndex: 2
   radio: {fileID: 1847867263}
+  isActive: 0
+  radioTimer: 0
 --- !u!82 &1847867263
 AudioSource:
   m_ObjectHideFlags: 0

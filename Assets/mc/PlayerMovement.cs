@@ -19,14 +19,16 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public TextMeshProUGUI walkRunText;
 
-    Vector2 movement;
+    public Vector2 movement;
 
     bool disabled;
 
     public static Transform playerTransform;
+    public static PlayerMovement instance;
 
     void OnEnable()
     {
+        instance = this;
         playerTransform = transform;
     }
 
@@ -43,7 +45,14 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("AnimationMod", 1.0f + ((moveSpeed - walkSpeed) / (runSpeed - walkSpeed)) * animationSpeedMod);
 
         moveSpeed = Mathf.Clamp(moveSpeed + (walking ? -speedChange * Time.deltaTime : speedChange * Time.deltaTime), walkSpeed, runSpeed);
+    }
 
+    public void OverrideMovement()
+    {
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
+        animator.SetFloat("AnimationMod", 1.0f + ((moveSpeed - walkSpeed) / (runSpeed - walkSpeed)) * animationSpeedMod);
     }
 
     void FixedUpdate()
