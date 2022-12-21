@@ -31,6 +31,11 @@ public class DPadMovement : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
+            crossBounds = new Bounds(Camera.main.WorldToScreenPoint(crossTransform.position), 
+                                 new Vector3((Camera.main.WorldToScreenPoint(crossHandles[0].rectTransform.position).x - Camera.main.WorldToScreenPoint(crossHandles[1].rectTransform.position).x) + 10.0f, 
+                                             (Camera.main.WorldToScreenPoint(crossHandles[2].rectTransform.position).y - Camera.main.WorldToScreenPoint(crossHandles[3].rectTransform.position).y) + 10.0f, 0f));
+            crossBounds.center = new Vector3(crossBounds.center.x, crossBounds.center.y);
+
             if (crossBounds.Contains(Input.mousePosition))
             {
                 if (Input.mousePosition.x > crossBounds.center.x + pixelBuffer)
