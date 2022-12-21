@@ -2760,7 +2760,7 @@ PrefabInstance:
       objectReference: {fileID: 2082062863}
     - target: {fileID: 8844029699858199189, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 23.199997
+      value: 23.199951
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cf8ae736cc804f4a81926bf697c6002, type: 3}
@@ -3053,7 +3053,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 12
   m_Sprite: {fileID: 21300000, guid: e7fb9eb577f4fdb4e89d3488bbc77185, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -3749,7 +3749,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 12
+  m_SortingOrder: 14
   m_Sprite: {fileID: 1680192136, guid: 063c06e917aa7e74588eaf7cfbca4e87, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3858,6 +3858,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2114602650}
   - component: {fileID: 2114602649}
+  - component: {fileID: 2114602651}
   m_Layer: 0
   m_Name: KameHouseDoor
   m_TagString: Untagged
@@ -3905,7 +3906,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 13
   m_Sprite: {fileID: 21300000, guid: e7fb9eb577f4fdb4e89d3488bbc77185, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3932,6 +3933,22 @@ Transform:
   m_Father: {fileID: 913697787}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2114602651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114602648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8261b4b6c6aef84dad5f158f471d7e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kameKey: {fileID: 11400000, guid: 0b5ef0e1d30ddb84f90dede611f81f9a, type: 2}
+  doorTransform: {fileID: 2114602650}
+  openDistance: 1.5
+  open: 0
 --- !u!1 &2119952452
 GameObject:
   m_ObjectHideFlags: 0
