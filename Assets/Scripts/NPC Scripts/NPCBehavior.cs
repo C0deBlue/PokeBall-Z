@@ -13,14 +13,18 @@ public class NPCBehavior : MonoBehaviour
 {
     public Behavior behavior;               // What behavior will the NPC have?
     public bool hasQuest;
+    public Dialogue dialogue;
+    public bool playerNear;
+    public bool talking;
     // public Quest quest
+    private NPCBehavior npc;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        npc = GetComponent<NPCBehavior>();
     }
 
     // Update is called once per frame
@@ -50,6 +54,22 @@ public class NPCBehavior : MonoBehaviour
         Debug.Log("COLLISION: " + collision.gameObject.tag);
 
         // Display what the NPC says when player is near...
+        playerNear = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        playerNear = false;
+    }
+
+    private void OnMouseDown()
+    {
+        TriggerDialogue();
+    }
+
+    public void TriggerDialogue()
+    {
+        DialogueManager.Instance.StartDialogue(dialogue, npc);
     }
 
     private void LeftRightBehavior()

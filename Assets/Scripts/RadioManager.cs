@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 // Below comments written by Jonathan Sands 12/17/2022 @ 11:15AM
 // ~
@@ -48,6 +49,11 @@ public class RadioManager : MonoBehaviour
 
     public float radioTimer;
 
+    public TextMeshProUGUI text;
+
+    private bool recentlyChanged;
+    private float channelTimer;
+
 
     // WIll need a saved key of some sort to keep track of unlocked stations
     // Start is called before the first frame update
@@ -68,8 +74,9 @@ public class RadioManager : MonoBehaviour
         }
 
         radioTimer = 0;
-        
+
         // first station of unlockStations is always static
+        radioStatic.name = "Off";
         unlockedStations.Add(radioStatic);
         // Next unlock the first 3 radio stations in the master list
         // This is temporary - This will be controlled by a save file of some sort in the future
@@ -85,12 +92,21 @@ public class RadioManager : MonoBehaviour
     void Update()
     {
         radioTimer += Time.deltaTime;
+        HandleChannelName();
         
         // This is TEMPORARY to show how unlocking a new station would work.
         // In the future, the method will be queried by a separate script and will pass the name to unlock here.
         if (Input.GetKeyDown(KeyCode.U))
         {
             UnlockStation("Track 04");
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (text.IsActive())
+                text.gameObject.SetActive(false);
+            else
+                text.gameObject.SetActive(true);
         }
 
     }
@@ -142,6 +158,8 @@ public class RadioManager : MonoBehaviour
         radio.Stop();
         // Change the radio station
         activeIndex = (activeIndex + 1) % unlockedStations.Count;
+        // kickstart the channel reveal process
+        SetUpChannelName();
         // We don't need this anymore since we have a different way of muting
         if (activeIndex == 0)
         {
@@ -159,6 +177,30 @@ public class RadioManager : MonoBehaviour
 
 
     }    
+
+    // Sets the preliminary data for the channel name
+    private void SetUpChannelName()
+    {
+        channelTimer = 0;
+        recentlyChanged = true;
+        text.text = unlockedStations[activeIndex].name;
+        text.gameObject.SetActive(true);
+    }
+
+    // handles revealing the current channel name
+    private void HandleChannelName()
+    {
+        if (!recentlyChanged)
+            return;
+        // Increment the timer
+        // TODO: add fade in and out
+        channelTimer += Time.deltaTime;
+        if (channelTimer > 2.5f)
+        {
+            recentlyChanged = false;
+            text.gameObject.SetActive(false);
+        }
+    }
 
     /// <summary>
     /// Takes a name of the station to unlock. Adds that station to the list of unlocked stations
