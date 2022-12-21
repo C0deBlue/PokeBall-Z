@@ -4257,5 +4257,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: canvas_CameraSpace
       objectReference: {fileID: 0}
+    - target: {fileID: 7082508097284592970, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082508097284592970, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082508097284592970, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082508097284592970, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082508097284592970, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 99.99994
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed355997f12c04b4aa6ccd49fc371fb2, type: 3}
