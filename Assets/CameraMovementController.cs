@@ -20,10 +20,13 @@ public class CameraMovementController : MonoBehaviour
     public Transform player;
     public Transform camTransform;
     public float playerDist = 5.0f;
+
+    public static CameraMovementController instance;
    
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         cam = Camera.main;
         targetZoom = cam.orthographicSize;
         GenerateWorldBounds();
@@ -49,7 +52,7 @@ public class CameraMovementController : MonoBehaviour
         camTransform.position = tempVec;
     }
 
-    void GenerateWorldBounds()
+    public void GenerateWorldBounds()
     {
         generatedBounds = new Bounds((camBoundsObjects[0].position + camBoundsObjects[1].position) / 2.0f, 
                                         new Vector3(Mathf.Abs(camBoundsObjects[0].position.x - camBoundsObjects[1].position.x), 

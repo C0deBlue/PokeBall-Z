@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     bool disabled;
 
     public static Transform playerTransform;
+    public static bool freezeMovement;
     public static PlayerMovement instance;
 
     void OnEnable()
@@ -35,24 +36,33 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Input
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        if (!freezeMovement)
+        {
+            // Input
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
 
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.sqrMagnitude);
-        animator.SetFloat("AnimationMod", 1.0f + ((moveSpeed - walkSpeed) / (runSpeed - walkSpeed)) * animationSpeedMod);
-
+            animator.SetFloat("Horizontal", movement.x);
+            animator.SetFloat("Vertical", movement.y);
+            animator.SetFloat("Speed", movement.sqrMagnitude);
+            animator.SetFloat("AnimationMod", 1.0f + ((moveSpeed - walkSpeed) / (runSpeed - walkSpeed)) * animationSpeedMod);
+        }
+        else
+        {
+            movement = Vector2.zero;
+        }
         moveSpeed = Mathf.Clamp(moveSpeed + (walking ? -speedChange * Time.deltaTime : speedChange * Time.deltaTime), walkSpeed, runSpeed);
     }
 
     public void OverrideMovement()
     {
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.sqrMagnitude);
-        animator.SetFloat("AnimationMod", 1.0f + ((moveSpeed - walkSpeed) / (runSpeed - walkSpeed)) * animationSpeedMod);
+        if (!freezeMovement)
+        {
+            animator.SetFloat("Horizontal", movement.x);
+            animator.SetFloat("Vertical", movement.y);
+            animator.SetFloat("Speed", movement.sqrMagnitude);
+            animator.SetFloat("AnimationMod", 1.0f + ((moveSpeed - walkSpeed) / (runSpeed - walkSpeed)) * animationSpeedMod);
+        }
     }
 
     void FixedUpdate()
