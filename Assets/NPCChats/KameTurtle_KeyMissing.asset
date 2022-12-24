@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd185a06f41c964438293cc2098e7a06, type: 3}
+  m_Name: KameTurtle_KeyMissing
+  m_EditorClassIdentifier: 
+  linesSpoken:
+  - Have you seen my keys? I dropped them around here somewhere.
+  eventsNeeded: 
+  npcSpeaking: 0
+  priority: 0

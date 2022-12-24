@@ -16,6 +16,7 @@ public class KameDoor : MonoBehaviour
             Vector3.Distance(doorTransform.position, PlayerMovement.instance.transform.position) < openDistance &&
             InventoryManager.instance.IsObjectInInventory(kameKey))
         {
+            NPCChatManager.ActivateEvent(NPCChatManager.GameEvents.OpenedHouse);
             open = true;
             doorTransform.gameObject.SetActive(false);
         }

@@ -60,6 +60,11 @@ public class GroundObject : MonoBehaviour
 
     void PickUp()
     {
+        if (attachedObject.GetShortName() == "KameKey")
+        {
+            NPCChatManager.ActivateEvent(NPCChatManager.GameEvents.FoundKey);
+        }
+
         InventoryManager.instance.PickUpObject(attachedObject);
         gameObject.SetActive(false);
     }
